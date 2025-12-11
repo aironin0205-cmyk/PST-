@@ -21,6 +21,12 @@
       "options": {
         "command": "node --check services/backend/src/server.js"
       }
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm exec tsc -p services/backend/tsconfig.json"
+      }
     }
   },
   "tags": ["scope:backend"]

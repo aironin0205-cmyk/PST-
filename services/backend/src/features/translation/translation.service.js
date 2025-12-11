@@ -48,7 +48,10 @@ export class TranslationService {
       glossaryEntries.map((entry) => this.tmRepository.upsertVocabulary(entry)),
     );
     const glossaryContext = this.nlpService.summarizeContext(
-      storedGlossary.map((entry, idx) => ({ source: glossaryEntries[idx]?.sourceText || entry.key, target: entry.targetText || entry.target })),
+      storedGlossary.map((entry, idx) => ({
+        source: glossaryEntries[idx]?.sourceText || entry.key,
+        target: entry.targetText,
+      })),
     );
 
     const jobPayload = createJobPayload({ ...payload, personaId: persona.id, model, glossaryContext });

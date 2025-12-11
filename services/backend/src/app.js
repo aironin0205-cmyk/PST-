@@ -1,5 +1,4 @@
 import http from 'node:http';
-import { config } from './config/index.js';
 import { logger } from './config/logger.js';
 import { translationQueue } from './infrastructure/queue/index.js';
 import { AiGatewayService } from './infrastructure/services/aiGateway.service.js';

@@ -1,0 +1,50 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_DB: pst
+      POSTGRES_USER: pst
+      POSTGRES_PASSWORD: pst
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "pst"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+  neo4j:
+    image: neo4j:5-community
+    environment:
+      NEO4J_AUTH: neo4j/password
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - neo4j_data:/data
+
+  temporal:
+    image: temporalio/auto-setup:1.23
+    environment:
+      TEMPORAL_UI_PORT: 8080
+    ports:
+      - "7233:7233"
+      - "8233:8233"
+      - "9090:9090"
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - redis
+
+volumes:
+  pg_data:
+  neo4j_data:

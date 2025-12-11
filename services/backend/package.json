@@ -9,6 +9,7 @@
     "start": "node src/server.js"
   },
   "dependencies": {
-    "@my-project/shared-types": "workspace:*"
+    "@my-project/shared-types": "workspace:*",
+    "dotenv": "^16.4.5"
   }
 }

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@my-project/shared-types": ["packages/shared-types/index.js"],
+      "@pst/backend/*": ["services/backend/src/*"]
+    }
+  }
+}

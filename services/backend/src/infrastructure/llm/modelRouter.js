@@ -1,10 +1,26 @@
 import { config } from '../../config/index.js';
 
 const MODEL_PREFERENCES = {
-  academic_linguist: ['anthropic/claude-3.5-sonnet', 'openai/gpt-5.1', 'google/gemini-2.0-pro-exp-02-05'],
-  localization_pro: ['anthropic/claude-3.5-sonnet', 'anthropic/claude-3.5-haiku', 'google/gemini-flash-1.5'],
-  cultural_mediator: ['openai/gpt-5.1', 'anthropic/claude-3.5-sonnet', 'google/gemini-2.0-flash-exp'],
-  youthful_conversationalist: ['anthropic/claude-3.5-haiku', 'google/gemini-flash-1.5', 'openai/gpt-5.1'],
+  academic_linguist: [
+    'openai/gpt-4.1',
+    'perplexity/llama-3.1-sonar-large-128k-online',
+    'anthropic/claude-3.5-sonnet',
+  ],
+  localization_pro: [
+    'google/gemini-1.5-pro-latest',
+    'perplexity/llama-3.1-sonar-huge-128k-online',
+    'anthropic/claude-3.5-sonnet',
+  ],
+  cultural_mediator: [
+    'perplexity/llama-3.1-sonar-large-128k-online',
+    'openai/gpt-4.1',
+    'google/gemini-1.5-flash-latest',
+  ],
+  youthful_conversationalist: [
+    'google/gemini-1.5-flash-latest',
+    'perplexity/llama-3.1-sonar-small-128k-online',
+    'anthropic/claude-3.5-haiku',
+  ],
 };
 
 export class PersonaModelRouter {

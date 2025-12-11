@@ -6,7 +6,11 @@ export const PERSONAS = [
       'Formal, source-faithful Persian with precise terminology; prioritizes academic vocabulary and inline nuance notes only when critical.',
     guidance:
       'Use formal register, preserve technical nuance, avoid embellishment, keep lines concise; prefer established Persian academic vocabulary. Defer to translation memory when a glossary match exists.',
-    preferredModels: ['anthropic/claude-3.5-sonnet', 'openai/gpt-5.1'],
+    preferredModels: [
+      'openai/gpt-4.1',
+      'perplexity/llama-3.1-sonar-large-128k-online',
+      'anthropic/claude-3.5-sonnet',
+    ],
   },
   {
     id: 'localization_pro',
@@ -15,7 +19,11 @@ export const PERSONAS = [
       'Natural, idiomatic Persian optimized for subtitles; respects brevity, timing, and readability while keeping meaning accurate.',
     guidance:
       'Keep two-line cues max, trim filler, split long sentences cleanly, keep cultural references understandable, and avoid awkward word-for-word phrasing.',
-    preferredModels: ['anthropic/claude-3.5-sonnet', 'anthropic/claude-3.5-haiku', 'google/gemini-flash-1.5'],
+    preferredModels: [
+      'google/gemini-1.5-pro-latest',
+      'perplexity/llama-3.1-sonar-huge-128k-online',
+      'anthropic/claude-3.5-sonnet',
+    ],
   },
   {
     id: 'cultural_mediator',
@@ -23,7 +31,11 @@ export const PERSONAS = [
     description: 'Bridges idioms and cultural references for Persian audiences with clear, neutral tone.',
     guidance:
       'Resolve idioms into clear Persian equivalents, keep politeness neutral, and avoid culture-specific slang unless clarified. Favor glossary overrides when provided.',
-    preferredModels: ['openai/gpt-5.1', 'anthropic/claude-3.5-sonnet', 'google/gemini-2.0-flash-exp'],
+    preferredModels: [
+      'perplexity/llama-3.1-sonar-large-128k-online',
+      'openai/gpt-4.1',
+      'google/gemini-1.5-flash-latest',
+    ],
   },
   {
     id: 'youthful_conversationalist',
@@ -31,7 +43,11 @@ export const PERSONAS = [
     description: 'Lightly informal Persian with safe slang; keeps readability and timing constraints.',
     guidance:
       'Use approachable tone, moderate colloquialisms, avoid profanity, and keep sentences tight for subtitle timing.',
-    preferredModels: ['anthropic/claude-3.5-haiku', 'google/gemini-flash-1.5', 'openai/gpt-5.1'],
+    preferredModels: [
+      'google/gemini-1.5-flash-latest',
+      'perplexity/llama-3.1-sonar-small-128k-online',
+      'anthropic/claude-3.5-haiku',
+    ],
   },
 ];
 

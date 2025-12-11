@@ -9,7 +9,7 @@ English→Persian subtitle translation service with persona-aware prompts, OpenR
 
 ## Features
 - Nx workspace linking backend app and shared types for future packages.
-- Persona catalog with preferred models (Claude Sonnet/Haiku 4.5, GPT-5.1, Gemini 3 Pro, Gemini 2.5 Flash).
+- Persona catalog with preferred models, including web-grounded choices (Perplexity Sonar online variants) plus Claude, GPT-4.1, and Gemini 1.5 tiers.
 - OpenRouter-backed AI gateway with persona-aware prompt builder and optional LiteLLM-style model hints.
 - Translation memory stubs (PostgreSQL + pgvector), graph hooks (Neo4j), and workflow hooks (Temporal) ready to be swapped for real services.
 - SRT parsing/serialization to preserve subtitle timing.
@@ -20,28 +20,33 @@ English→Persian subtitle translation service with persona-aware prompts, OpenR
 - OpenRouter API key if you want real LLM calls (otherwise the gateway returns stubbed text).
 
 ## Local setup
-1. Install dependencies:
+### Bring it to life locally (step-by-step)
+1. Install prerequisites: Node.js 18+, pnpm 8+, and Docker if you want the optional infra.
+2. Install dependencies:
    ```bash
    pnpm install
    ```
-
-2. Create an `.env` file (see [.env.example](.env.example)):
+3. Create an `.env` file and set your keys:
    ```bash
    cp .env.example .env
    ```
-   Fill in your `OPENROUTER_API_KEY` and adjust DB/graph endpoints if you have them running.
-
-3. (Optional) Start local infra with pgvector/Redis/Neo4j/Temporal:
+   - Set `OPENROUTER_API_KEY`.
+   - Keep `DEFAULT_LLM_MODEL` as the web-grounded Sonar default or swap to a persona-specific pick (see `/personas`).
+4. (Optional but recommended) Start local infra for persistence/queue/graph/workflows:
    ```bash
    docker compose up -d postgres redis neo4j temporal
    ```
-   The defaults align with `DATABASE_URL`, `NEO4J_URI`, and Temporal ports in `.env.example`.
-
-4. Start the backend API (from the repo root):
+   The URLs in `.env` already point at these services.
+5. Launch the backend API (from repo root):
    ```bash
    pnpm dev:backend
    ```
-   The server listens on `http://localhost:3000` by default.
+   The server listens on `http://localhost:3000`.
+6. Explore endpoints:
+   - `GET /health` — readiness check
+   - `GET /personas` — persona catalog with model suggestions
+   - `POST /translations` — submit jobs; include `personaId` and optional `model` override
+7. (Optional) Validate code: `pnpm lint` and `pnpm typecheck` (requires Nx binary download).
 
 ## API quickstart
 - Health check:

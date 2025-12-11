@@ -5,9 +5,12 @@
   "description": "Professional English to Persian Translation Platform",
   "scripts": {
     "dev:backend": "pnpm --filter backend dev",
-    "build": "pnpm -r build"
+    "build": "pnpm -r build",
+    "graph": "nx graph",
+    "lint": "nx run-many --target=lint"
   },
   "devDependencies": {
+    "nx": "^19.8.0",
     "typescript": "^5.0.0"
   },
   "engines": {
